@@ -37,8 +37,10 @@ const EditRobotPage = () => {
   if (!robotData) return <p>Cargando...</p>;
 
   return (
-    <div>
-      <h2>Editar Robot</h2>
+    <div className="max-w-3xl m-4 mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        Editar Robot
+      </h1>
       <RobotForm initialData={robotData} onSubmit={handleUpdate} />
     </div>
   );

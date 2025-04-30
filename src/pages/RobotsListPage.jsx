@@ -54,31 +54,43 @@ const RobotsListPage = () => {
   };
 
   return (
-    <div>
-      <h2>Lista de Robots</h2>
+    <div className="max-w-6xl my-4 mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">Lista de Robots</h1>
 
       {/* Filtros */}
-      <div style={{ marginBottom: 20 }}>
-        <label>Filtrar por Origen: </label>
-        <select value={selectedOrigen} onChange={handleFilterOrigen}>
-          <option value="">Todos</option>
-          <option value="Pelicula">Película</option>
-          <option value="Serie">Serie</option>
-          <option value="Videojuego">Videojuego</option>
-          <option value="Comic">Comic</option>
-        </select>
+      <div className="flex justify-between mb-6">
+        <div>
+          <label className="mr-2 text-gray-700 dark:text-gray-300">Filtrar por Origen: </label>
+          <select
+            value={selectedOrigen}
+            onChange={handleFilterOrigen}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          >
+            <option value="">Todos</option>
+            <option value="Pelicula">Película</option>
+            <option value="Serie">Serie</option>
+            <option value="Videojuego">Videojuego</option>
+            <option value="Comic">Comic</option>
+          </select>
+        </div>
 
-        <label style={{ marginLeft: 20 }}>Filtrar por Bando: </label>
-        <select value={selectedBando} onChange={handleFilterBando}>
-          <option value="">Todos</option>
-          <option value="Heroe">Héroe</option>
-          <option value="Villano">Villano</option>
-          <option value="Neutral">Neutral</option>
-        </select>
+        <div>
+          <label className="mr-2 text-gray-700 dark:text-gray-300">Filtrar por Bando: </label>
+          <select
+            value={selectedBando}
+            onChange={handleFilterBando}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          >
+            <option value="">Todos</option>
+            <option value="Heroe">Héroe</option>
+            <option value="Villano">Villano</option>
+            <option value="Neutral">Neutral</option>
+          </select>
+        </div>
       </div>
 
       {/* Lista de robots */}
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {robots.map((robot) => (
           <RobotCard key={robot._id} robot={robot} />
         ))}
