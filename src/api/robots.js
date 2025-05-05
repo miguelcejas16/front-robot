@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/robots";
+const API_URL = "https://robotsfamososapi.onrender.com/api/robots";
 
 export const getAllRobots = async (token) => {
   const response = await axios.get(API_URL, {
@@ -12,7 +12,7 @@ export const getAllRobots = async (token) => {
 };
 
 export const getRobotById = async (id, token) => {
-  const response = await axios.get(`http://localhost:3000/api/robots/${id}`, {
+  const response = await axios.get(`${API_URL}/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -22,7 +22,7 @@ export const getRobotById = async (id, token) => {
 
 
 export const createRobot = async (robotData, token) => {
-    const response = await axios.post("http://localhost:3000/api/robots", robotData, {
+    const response = await axios.post({API_URL}, robotData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const createRobot = async (robotData, token) => {
   };
 
 export const deleteRobot = async (id, token) => {
-  const response = await axios.delete(`http://localhost:3000/api/robots/${id}`, {
+  const response = await axios.delete(`${API_URL}/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -41,7 +41,7 @@ export const deleteRobot = async (id, token) => {
 };
 
 export const updateRobot = async (id, updatedData, token) => {
-  const response = await axios.put(`http://localhost:3000/api/robots/${id}`, updatedData, {
+  const response = await axios.put(`${API_URL}/${id}`, updatedData, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const updateRobot = async (id, updatedData, token) => {
 };
 
 export const filterByOrigen = async (origen, token) => {
-  const response = await axios.get(`http://localhost:3000/api/robots/filter/origen?origen=${encodeURIComponent(origen)}`, {
+  const response = await axios.get(`${API_URL}/filter/origen?origen=${encodeURIComponent(origen)}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -60,7 +60,7 @@ export const filterByOrigen = async (origen, token) => {
 };
 
 export const filterByBando = async (bando, token) => {
-  const response = await axios.get(`http://localhost:3000/api/robots/filter/bando?bando=${encodeURIComponent(bando)}`, {
+  const response = await axios.get(`${API_URL}/filter/bando?bando=${encodeURIComponent(bando)}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

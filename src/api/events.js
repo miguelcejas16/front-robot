@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost:3000/api/events";
+const API_URL = "https://robotsfamososapi.onrender.com/api/events";
 
 // Crear un evento
 export const createEvent = async (eventData, token) => {
