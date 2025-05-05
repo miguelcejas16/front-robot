@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createEvent, updateEvent } from "../api/events";
 
-const EventForm = ({ robotId, token, evento, onClose, onSave }) => {
+const EventForm = ({ robot, token, evento, onClose, onSave }) => {
   const [descripcion, setDescripcion] = useState("");
   const [fecha, setFecha] = useState("");
 
@@ -21,8 +21,10 @@ const EventForm = ({ robotId, token, evento, onClose, onSave }) => {
     const newEvent = {
       descripcion,
       fecha,
-      robotId,
+      robot,
     };
+
+    console.log(newEvent)
 
     try {
       if (evento) {

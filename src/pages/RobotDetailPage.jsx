@@ -4,6 +4,7 @@ import { getRobotById } from "../api/robots";
 import { filterByRobot, deleteEvent } from "../api/events";
 import EventForm from "../components/EventForm";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const DetailRobotPage = () => {
   const { id } = useParams();
@@ -24,8 +25,28 @@ const DetailRobotPage = () => {
   }, [id, token]);
 
   const handleDelete = async (eventId) => {
-    await deleteEvent(eventId, token);
-    setEventos(eventos.filter(e => e._id !== eventId));
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará el evento permanentemente.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+    });
+    if (result.isConfirmed){
+      // Eliminar evento
+      try {
+        await deleteEvent(eventId, token);
+      setEventos(eventos.filter(e => e._id !== eventId));
+      Swal.fire("Eliminado", "El evento ha sido eliminado.", "success");   
+      } catch (error) {
+        console.error("❌ Error al eliminar evento:", error);
+        Swal.fire("Error", "No se pudo eliminar el evento.", "error");
+        return;       
+      }    
+    }
   };
 
   const handleEdit = (evento) => {
@@ -114,7 +135,7 @@ const DetailRobotPage = () => {
           {user?.role === "admin" && showForm && (
             <div className="mt-6 p-4 bg-gray-200 dark:bg-gray-600 rounded-lg shadow">
               <EventForm
-                robotId={id}
+                robot={id}
                 token={token}
                 evento={eventoEdit}
                 onClose={() => setShowForm(false)}
