@@ -54,6 +54,5 @@ src/
 ├── context/          # Contextos de autenticación y favoritos
 ├── pages/            # Vistas principales
 ├── routes/           # Configuración de rutas
-├── styles/           # Tailwind y estilos globales
 └── main.jsx          # Punto de entrada de la app
 ```
