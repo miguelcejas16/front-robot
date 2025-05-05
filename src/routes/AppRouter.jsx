@@ -10,6 +10,7 @@ import CreateRobotPage from "../pages/CreateRobotPage";
 import EditRobotPage from "../pages/EditRobotPage";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import DetailRobotPage from "../pages/RobotDetailPage";
 
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
@@ -35,6 +36,7 @@ const AppRouter = () => {
             <Route path="/favorites" element={<PrivateRoute><FavoritesPage /></PrivateRoute>} />
             <Route path="/create" element={<AdminRoute><CreateRobotPage /></AdminRoute>} />
             <Route path="/edit/:id" element={<AdminRoute><EditRobotPage /></AdminRoute>} />
+            <Route path="/robots/:id" element={<DetailRobotPage />} />
             <Route path="*" element={<NotFoundPage/>} />
           </>
         )}
