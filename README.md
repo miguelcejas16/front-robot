@@ -56,3 +56,8 @@ src/
 ├── routes/           # Configuración de rutas
 └── main.jsx          # Punto de entrada de la app
 ```
+
+Link del despliegue: 
+```
+robotsfamosos.netlify.app
+```
